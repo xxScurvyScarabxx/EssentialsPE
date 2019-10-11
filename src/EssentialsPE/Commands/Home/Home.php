@@ -35,18 +35,18 @@ class Home extends BaseCommand{
         }
         if(count($args) === 0){
             if(($list = $this->getAPI()->homesList($sender, false)) === false){
-                $sender->sendMessage(TextFormat::AQUA . "§c[Error] §2You don't have any home yet.");
+                $sender->sendMessage(TextFormat::AQUA . "§8[§c!§8] §cYou don't have any home yet.");
                 return false;
             }
-            $sender->sendMessage(TextFormat::AQUA . "§bHere's a list of homes:\n§a" . $list);
+            $sender->sendMessage(TextFormat::AQUA . "§8[§b!§8] §bHere's a list of homes:\n§a" . $list);
             return true;
         }
         if(!($home = $this->getAPI()->getHome($sender, $args[0]))){
-            $sender->sendMessage(TextFormat::RED . "[Error] §2Home doesn't exists or the world is not available");
+            $sender->sendMessage(TextFormat::RED . "§8[§c!§8] §2Home doesn't exists or the world is not available");
             return false;
         }
         $sender->teleport($home);
-        $sender->sendMessage(TextFormat::GREEN . "§dTeleporting to home §5" . TextFormat::DARK_PURPLE . $home->getName() . TextFormat::GREEN . "§dsuccesfully!");
+        $sender->sendMessage(TextFormat::GREEN . "§8[§a!§8] Teleporting to home §5" . TextFormat::DARK_PURPLE . $home->getName() . TextFormat::GREEN . "§dsuccesfully!");
         return true;
     }
 } 
